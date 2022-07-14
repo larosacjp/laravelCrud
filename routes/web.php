@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Route for mailing
+Route::get('/email', function(){
+  return new WelcomeMail();
+});
