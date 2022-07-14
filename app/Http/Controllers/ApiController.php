@@ -25,10 +25,7 @@ class ApiController extends Controller
       $dispstudents = Students::orderBy('created_at','desc')
                       //->where('fname','=', $request->fname)
                       ->get();
-      foreach($dispstudents as $dispstudent)
-      {
-        echo $dispstudent['fname'].'<br>';
-      }
+
       return response()->json($dispstudents);
     }
 
