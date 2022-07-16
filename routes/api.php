@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Apicontroller;
+use App\Http\Controllers\SubjectsController;
+use App\Http\Controllers\EnrollmentsController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,6 +23,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/student', [ApiController::class, 'create']);
 Route::get('/displayStudents', [ApiController::class, 'displayStudents'])->name('disp');
-Route::get('/disptest', [ApiController::class, 'disptest']);
+Route::get('/displayStudent/{id}', [ApiController::class, 'displayStudent']);
 Route::get('/deleteStudents', [ApiController::class, 'deleteStudents']);
 Route::post('/updateStudents', [ApiController::class, 'updateStudents']);
+
+Route::post('/createSubject', [SubjectsController::class,'createSubject']);
+Route::get('/viewSubjects', [SubjectsController::class,'viewSubjects']);
+Route::get('/deleteSubject/{name}',[SubjectsController::class,'deleteSubject']);
+Route::post('/updateSubject/{name}',[SubjectsController::class,'updateSubject']);
+
+Route::post('/createEnrollment', [EnrollmentsController::class,'createEnrollment']);
+Route::get('/viewEnrollments/{id}', [EnrollmentsController::class,'viewEnrollments']);

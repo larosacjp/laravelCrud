@@ -19,7 +19,7 @@ class ApiController extends Controller
       return response()->json($students);
     }
 
-    public function displayStudentS(Request $request)
+    public function displayStudents(Request $request)
     {
 
       $dispstudents = Students::orderBy('created_at','desc')
@@ -27,6 +27,16 @@ class ApiController extends Controller
                       ->get();
 
       return response()->json($dispstudents);
+    }
+
+    public function displayStudent($id)
+    {
+      echo $id;
+      $dispstudent = Students::where('id', $id)
+                      ->orderBy('created_at','desc')
+                      ->get();
+
+      return response()->json($dispstudent);
     }
 
     public function deleteStudents()
